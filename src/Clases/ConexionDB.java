@@ -42,8 +42,11 @@ public class ConexionDB {
      * Obtención de la conexión. Este método es utilizado para crear la conexión
      * con la Base de Datos. Utiliza un driver JDBC (Java Database Connectivity).
      * 
+     * Retorna null si ocurre un error al intentar establecer la conexión. Por ejemplo,
+     * si el servidor de Base de Datos se encuentre apagado.
      * 
-     * @return 
+     * @return Un objeto de tipo Connection con la conexión si se establece exitosamente, 
+     * caso contrario, devuelve null.
      */
     public static Connection getConnection() {
         try {
@@ -55,17 +58,28 @@ public class ConexionDB {
         return conexionBD;
     }
     
+    /**
+     * Cierre de la Base de Datos. Siempre, luego de terminar de utilizar una conexión,
+     * se debe cerrarla para evitar una brecha de datos.
+     * 
+     * Este método cumple esa función, solo si ya no lo está.
+     */
     public static void closeConnection() {
         try {
             if (!conexionBD.isClosed()) {
                 conexionBD.close();
-                System.out.println("Base de Datos cerrada con éxito.");
             }
         } catch (SQLException e) {
-            System.out.println("Error");
         }
     }
     
+    /**
+     * Verificación de conexión. Este método verifica si la conexión con la Base de Datos funciona 
+     * correctamente.
+     * 
+     * @param conexion La conexión a verificar.
+     * @return True o False en función de si la conexión es nula o no. Por eso en el método "getConnection()", si hay un error, devuelve null.
+     */
     public static boolean verificarConexión(Connection conexion) {
         return conexion != null;
     }
