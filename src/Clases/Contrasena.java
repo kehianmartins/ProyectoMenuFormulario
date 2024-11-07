@@ -7,13 +7,14 @@ package Clases;
 import java.util.Arrays;
 
 /**
- * @author Kehian
  * 
  * Clase con los métodos necesarios para la validación
  * de la contraseña en los formularios principales. Se
  * decidió separar los métodos para evitar repeticiones de
  * código y que el código fuente de los formularios sea
  * más limpio.
+ * 
+ * @author Kehian
  */
 public class Contrasena {
     
